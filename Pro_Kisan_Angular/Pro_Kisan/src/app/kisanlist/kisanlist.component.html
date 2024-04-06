@@ -1,0 +1,74 @@
+
+
+<!-- <app-navebar></app-navebar> -->
+
+<body>
+  <div class="img-fluid" style="background-image: url(../../assets/files/kisan5.jpg); 
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  -o-background-size: 100%;
+  background-size: 100%;
+  padding-bottom:19%;
+   
+   height: auto;" class="center" align ="center">
+    <h2>FARMER LIST</h2>
+    <br>
+    
+    <div>
+      <select name="id" [(ngModel)]="form.search.id">
+        <option [ngValue]="" value="undefined">{{'------Select Farmer Name-------' }}</option>
+        <option *ngFor="let obj of form.preload" [value]="obj.key">{{obj.value}}</option>
+       
+      </select>
+      &nbsp;
+      <input type="text" [(ngModel)]="form.search.company">
+      &nbsp;
+      <button (click)="search()">Search</button>&nbsp;
+      <button (click)="delete()">Delete</button>
+      
+    </div>
+    <br><br>
+    <div style="color: red;">{{form.message}}</div>
+    <table border="2">
+      <tr>
+        
+        <th>SELECT</th>
+        <th>ID</th>
+        <th>Crop_Image</th>
+        <th>FARMER_NAME</th>
+        <th>CROP</th>
+        <th>QUANTITY</th>
+        <th>MSP</th>
+        <th>PURCHASE_DATE</th>
+        <th>EDIT</th>
+       
+        
+      </tr>
+      <tr *ngFor="let m of form.list">
+        <td><input type="checkbox" (change)="onCheckboxChange(m.id)" /></td>
+       
+        <td>{{m.id}}</td>
+        <td> <img src="http://localhost:8080/User/profilePic/{{m.id}}" height="55px" width="80px"></td>
+        <td>{{m.farmerName}}</td>
+        <td>{{m.crop}}</td>
+        <td>{{m.quantity}}</td>
+        <td>{{m.msp}}</td>
+        <td>{{m.purchaseDate}}</td>
+       
+        <td> <a (click)="edit( '/farmer/' +  m.id)" style="color: blue;">edit
+        </a></td>
+      </tr>
+    </table>
+    <a  href="/farmerlist"><b>FarmerList</b></a> | <a href="/farmer"><b>Add Farmer</b></a> 
+  </div>
+ 
+</body>
+
+<br>
+
+
+<!-- <app-footer></app-footer> -->
+  
+     
+   
+

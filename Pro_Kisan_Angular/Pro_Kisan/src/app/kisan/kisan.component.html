@@ -1,0 +1,74 @@
+<div class="img-fluid" style="background-image: url(../../assets/files/kisan1.jpg); 
+-webkit-background-size: 100%;
+-moz-background-size: 100%;
+-o-background-size: 100%;
+background-size: 100%;
+padding-bottom:20%;
+
+"align="center">
+    <tr *ngIf="form.id">
+
+    <h2 style="color: navy">UPDATE FARMER </h2>
+</tr>
+<tr *ngIf="!form.id">
+    <h2 style="color: navy">ADD FARMER </h2>
+</tr>
+  
+<div style="height: 15px; margin-bottom: 12px" align="center" class="success" *ngIf="form.message">
+        {{ form.message }}
+      </div>
+    <table>
+     
+        <tr>
+            <th>FARMER NAME :</th>
+            <td><input type="text" name="farmerName" [(ngModel)]="form.farmerName" /> </td>
+            <td *ngIf="inputerror.farmerName != null" class="error" style="position: fixed; color: red;">
+                {{inputerror.ownerName}}
+            </td>
+        </tr>
+        <tr>
+            <th> CROP:</th>
+            <td><input type="text" name="crop" [(ngModel)]="form.crop" /> </td>
+            <td *ngIf="inputerror.crop != null" class="error" style="position: fixed; color: red;">
+                {{inputerror.company}}
+            </td>
+        </tr>
+        <tr>
+            <th> QUANTITY:</th>
+            <td><input type="text" name="quantity" [(ngModel)]="form.quantity" /> </td>
+            <td *ngIf="inputerror.quantity != null" class="error" style="position: fixed; color: red;">
+                {{inputerror.model}}
+            </td>
+        </tr>
+        <tr>
+            <th>MSP :</th>
+            <td><input type="text" name="msp" [(ngModel)]="form.msp" /> </td>
+            <td *ngIf="inputerror.msp != null" class="error" style="position: fixed; color: red;">
+                {{inputerror.price}}
+            </td>
+        </tr>
+        
+        <tr>
+            <th>PURCHASE DATE :</th>
+            <td>
+               <input type="date" name="purchaseDate" [(ngModel)]="form.purchaseDate">
+            </td>
+        </tr>
+
+        <tr>
+            <th>Crop Pic :</th>
+            <td> <img src="http://localhost:8080/User/profilePic/{{form.id}}" height="55px" width="80px"></td>
+        </tr>
+        <tr>
+            <th>Crop Image :</th>
+            <td><input type="file" id="customFile" name="imageId" (change)="onFileSelect($event)" accept="image/*">
+            </td>
+        </tr>
+       <tr>
+            <th></th>
+            <td><button (click)="save()">save</button></td>
+        </tr>
+    </table>
+    <br>
+    <a href="/farmerlist"><b>Farmer List</b></a> 
+</div>
